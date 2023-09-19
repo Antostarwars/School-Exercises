@@ -1,5 +1,5 @@
 <div align="center">
-      <h1> <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/CSharp_Icon.svg/2048px-CSharp_Icon.svg.png" width="80px"><br/>C# School</h1>
+      <h1> <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Csharp_Logo.png?20180210215736" width="80px"><br/>C# School</h1>
      </div>
 
 
