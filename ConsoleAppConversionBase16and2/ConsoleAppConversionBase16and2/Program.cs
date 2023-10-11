@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-// Antonio De Rosa 3H 2023-11-10
+// Antonio De Rosa 3H 2023-10-11
 // Base conversion from 10 to 2 and from 10 to 16
 namespace ConsoleAppConversionBase16and2
 {
@@ -12,7 +12,7 @@ namespace ConsoleAppConversionBase16and2
         {
             Console.OutputEncoding = System.Text.Encoding.UTF8;
 
-            Console.Title = "Antonio De Rosa 3H 2023-11-10";
+            Console.Title = "Antonio De Rosa 3H 2023-10-11";
             Console.Clear();
 
             #region Variables Declaration
