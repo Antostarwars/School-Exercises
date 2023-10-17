@@ -21,6 +21,7 @@ namespace ConsoleAppConvertIntegerToText
 
             int numberToConvert;
             bool inputOK = false;
+            // Input Number
             do
             {
                 Console.WriteLine("Insert the number you want to convert (0-9999)");
@@ -37,12 +38,18 @@ namespace ConsoleAppConvertIntegerToText
             } while (inputOK == false);
 
             string result = "";
-
+            // Convert to thousands etc
             int thousands = numberToConvert / 1000;
             int hundreds = (numberToConvert % 1000) / 100;
             int tens = (numberToConvert % 100) / 10;
             int ones = numberToConvert % 10;
 
+            // Particolar Case. if zero return zero.
+            if (numberToConvert == 0)
+            {
+                result = "zero";
+            }
+            // Case for Thousands
             switch (thousands)
             {
                 case 1:
@@ -73,6 +80,7 @@ namespace ConsoleAppConvertIntegerToText
                     result += "nine thousand ";
                     break;
             }
+            // Case for Hundreds
             switch (hundreds)
             {
                 case 1:
@@ -104,6 +112,7 @@ namespace ConsoleAppConvertIntegerToText
                     break;
             }
 
+            // Case if Tens are 2
             if (tens >= 2)
             {
                 switch (tens)
@@ -133,7 +142,7 @@ namespace ConsoleAppConvertIntegerToText
                         result += "ninety ";
                         break;
                 }
-
+                // case for ones ex. 1,2,3 etc
                 switch (ones)
                 {
                     case 1:
@@ -167,6 +176,7 @@ namespace ConsoleAppConvertIntegerToText
             }
             else
             {
+                // Particolar Case for eleven, twelve, etc
                 int twoDigitNumber = tens * 10 + ones;
                 switch (twoDigitNumber)
                 {
@@ -201,6 +211,7 @@ namespace ConsoleAppConvertIntegerToText
                         result += "nineteen ";
                         break;
 
+                    // Case for Default Ones
                     default:
                         switch (ones)
                         {
@@ -236,6 +247,7 @@ namespace ConsoleAppConvertIntegerToText
                 }
             }
 
+            // Output
             Console.WriteLine("The number {0} in text is {1}", numberToConvert, result);
 
             Console.WriteLine("Press a key to stop the program");
