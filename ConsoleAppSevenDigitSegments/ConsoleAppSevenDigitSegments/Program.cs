@@ -2,6 +2,7 @@
 using System.Threading;
 
 // Antonio De Rosa 3H 2023-09-20
+// Create a 7 Digit Display
 namespace ConsoleAppSevenDigitSegments
 {
     internal class Program
