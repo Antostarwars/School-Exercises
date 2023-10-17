@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppConvertIntegerToText", "ConsoleAppConvertIntegerToText\ConsoleAppConvertIntegerToText.csproj", "{735406AD-BA5C-481D-BDED-ABE463061FA9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppIfElseSwitch", "ConsoleAppIfElseSwitch\ConsoleAppIfElseSwitch.csproj", "{2CEE812F-AB2D-48AD-9E76-0984B5D69A7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{735406AD-BA5C-481D-BDED-ABE463061FA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{735406AD-BA5C-481D-BDED-ABE463061FA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{735406AD-BA5C-481D-BDED-ABE463061FA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{735406AD-BA5C-481D-BDED-ABE463061FA9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CEE812F-AB2D-48AD-9E76-0984B5D69A7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CEE812F-AB2D-48AD-9E76-0984B5D69A7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CEE812F-AB2D-48AD-9E76-0984B5D69A7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CEE812F-AB2D-48AD-9E76-0984B5D69A7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B15F294B-9D9B-49E6-B85B-7B0FBC31B59A}
+	EndGlobalSection
+EndGlobal
