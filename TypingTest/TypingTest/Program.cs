@@ -49,7 +49,6 @@ namespace TypingTest
             Console.WriteLine($"\nTime Elapsed: {sw.Elapsed}");
             Console.WriteLine($"Characters per Minute: {(int)(sentence.Length / ((double)sw.ElapsedMilliseconds / 60000.0))}");
             Console.WriteLine($"Errors: {errors}");
-
             Console.ReadKey();
         }
 
