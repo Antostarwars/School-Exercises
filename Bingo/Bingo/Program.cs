@@ -117,7 +117,7 @@ namespace Bingo
             return number;
         }
 
-        static bool CheckWin(Win type)
+        static void CheckWin(Win type)
         {
             // Check if the number is extracted
             bool win = false;
@@ -127,7 +127,7 @@ namespace Bingo
                 if (number.ToString() == board[number - 1]) win = true;
             }
 
-            return win;
+            Console.WriteLine(win ? "You have made " + (int)type + " in a row!" : "You haven't made " + (int)type + " in a row!");
         }
 
         static void GenerateCard()
