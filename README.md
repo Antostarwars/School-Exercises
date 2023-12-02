@@ -11,7 +11,7 @@ This is a Repository to store my own school Projects, coded in C#!
 
 - You can use this codes!
 
-- If you are one of my classmates please don't use this codes <3
+- If you are one of my classmates please don't use this codes without permission <3 
 
 # Tech Used
 ![CSharp](https://img.shields.io/badge/csharp-%230095D5.svg?style=for-the-badge&logo=csharp&logoColor=white)
