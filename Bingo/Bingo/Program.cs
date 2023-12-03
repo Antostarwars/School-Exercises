@@ -130,12 +130,7 @@ namespace Bingo
                 int number = ReadInt();
                 if (number.ToString() == board[number - 1]) win = true;
             }
-
-<<<<<<< HEAD
-            Console.WriteLine(win ? "You won!" : "You lose!");
-=======
             Console.WriteLine(win ? "You have made " + (int)type + " in a row!" : "You haven't made " + (int)type + " in a row!");
->>>>>>> f8775a3430f656d9e2381f112e6f7be6a4584718
         }
 
         static void GenerateCard()
