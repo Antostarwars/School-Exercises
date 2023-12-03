@@ -22,10 +22,7 @@ namespace LinearSearch
                 }
             }
 
-            if (!found)
-            {
-                Console.WriteLine("Name {0} doesn't exist in names.", name);
-            }
+            if (!found) Console.WriteLine("Name {0} doesn't exist in names.", name);
         }
     }
 }
