@@ -16,6 +16,7 @@ namespace Bingo
         static string[] board = new string[90];
         static Random random = new Random();
         static int numbersExtracted = 0;
+        static int lastNumber;
 
         static void Main(string[] args)
         {
@@ -82,6 +83,8 @@ namespace Bingo
                 Console.Write(board[i] + " ");
             }
             Console.WriteLine("\n");
+
+            Console.WriteLine("Last number extracted is: {0}", lastNumber);
         }
 
         static void ExtractNumber()
@@ -95,6 +98,7 @@ namespace Bingo
                     if (number + 1 < 10) board[number] = "0" + (number + 1);
                     else board[number] = (number + 1).ToString();
                     numbersExtracted++;
+                    lastNumber = number + 1;
                     break;
                 }
             }
@@ -117,7 +121,7 @@ namespace Bingo
             return number;
         }
 
-        static bool CheckWin(Win type)
+        static void CheckWin(Win type)
         {
             // Check if the number is extracted
             bool win = false;
@@ -127,7 +131,7 @@ namespace Bingo
                 if (number.ToString() == board[number - 1]) win = true;
             }
 
-            return win;
+            Console.WriteLine(win ? "You won!" : "You lose!");
         }
 
         static void GenerateCard()
