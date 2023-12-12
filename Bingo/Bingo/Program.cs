@@ -1,5 +1,7 @@
 ﻿using System.Text;
 
+// Antonio De Rosa 3H 2023-11-28
+// Bingo Game (Card Generator, Numbers Extractor, Win Check)
 namespace Bingo
 {
     internal class Program
@@ -20,6 +22,7 @@ namespace Bingo
 
         static void Main(string[] args)
         {
+            Console.Title = "Antonio De Rosa 3H 2023-11-28";
             Console.OutputEncoding = Encoding.UTF8;
             for (int i = 0; i < board.Length; i++)
             {
@@ -28,7 +31,7 @@ namespace Bingo
 
             // Print Main Menu & Ask for a choice
             while (numbersExtracted != board.Length)
-            {   
+            {
                 PrintBoard();
                 PrintMenu();
                 char choice = Console.ReadKey(true).KeyChar;
@@ -47,7 +50,8 @@ namespace Bingo
                         CheckWin(Win.Bingo);
                         break;
                     case 'G':
-                        GenerateCard();
+                        int[,] card = GenerateCard();
+                        Console.WriteLine(WriteCard(card));
                         break;
                     case 'A':
                         System.Environment.Exit(0);
@@ -125,7 +129,7 @@ namespace Bingo
         {
             // Check if the number is extracted
             bool win = false;
-            for (int i = 0; i < (int) type;  i++)
+            for (int i = 0; i < (int)type; i++)
             {
                 int number = ReadInt();
                 if (number.ToString() == board[number - 1]) win = true;
@@ -133,20 +137,75 @@ namespace Bingo
             Console.WriteLine(win ? "You have made " + (int)type + " in a row!" : "You haven't made " + (int)type + " in a row!");
         }
 
-        static void GenerateCard()
+        static int[,] GenerateCard()
         {
-            Console.Clear();
+            int[,] card = new int[9, 3];
+            int[] numExtracted = new int[9];
+            bool[] valUsciti = new bool[board.Length];
 
-            Console.Write("--------------");
-            for (int i = 0;i < 15;i++)
+            for (int i = 0; i < 15; i++)
             {
-                int number = random.Next(0, 90);
-                if (i % 5 == 0) Console.WriteLine();
-
-                if (number < 10) Console.Write("0" + number + " ");
-                else Console.Write(number + " ");
+                bool continua = true;
+                while (continua)
+                {
+                    int valore = random.Next(90) + 1; // Generate a Random Number
+                    if (valore == 90) // Case 1: 90/10 != 8
+                    {
+                        if (numExtracted[8] == 3)
+                            continue;
+                        numExtracted[8]++;
+                        valUsciti[valore - 1] = true;
+                        for (int e = 0; e < 3; e++)
+                        {
+                            if (card[8, e] == 0)
+                            {
+                                card[8, e] = valore;
+                                continua = false;
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (numExtracted[valore / 10] == 3 || valUsciti[valore - 1])   // 3 Numbers are generated so i continue with tens range
+                            continue;
+                        numExtracted[valore / 10]++; // Counter + 1
+                        valUsciti[valore - 1] = true;
+                        for (int e = 0; e < 3; e++)
+                        {
+                            if (card[valore / 10, e] == 0)        // If it's not inizialized it means it's not extracted
+                            {
+                                card[valore / 10, e] = valore;    // set the value
+                                continua = false;                   // Exit the while loop
+                                break;
+                            }
+                        }
+                    }
+                }
             }
-            Console.WriteLine("\n--------------");
+            return card;
+        }
+
+        static string WriteCard(int[,] card)
+        {
+            string[] righe = new string[4];
+
+            for (int x = 0; x < 3; x++)
+            {
+                righe[x] = "|";
+                for (int y = 0; y < 9; y++)
+                {
+                    if (card[y, x] == 0)    // Value not extracted
+                        righe[x] += "  ##";     // Default Symbol
+                    else
+                        righe[x] += $"  {card[y, x]:00}";   // Value
+                }
+            }
+
+
+            return "+--------------------------------------+\n" +
+                                    string.Join("  |\n", righe) +
+                   "+--------------------------------------+";  // String format
         }
     }
 }
