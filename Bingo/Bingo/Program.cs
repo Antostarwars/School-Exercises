@@ -129,10 +129,13 @@ namespace Bingo
         {
             // Check if the number is extracted
             bool win = false;
+            int[] numberInserted = new int[(int)type];
+
             for (int i = 0; i < (int)type; i++)
             {
                 int number = ReadInt();
-                if (number.ToString() == board[number - 1]) win = true;
+                numberInserted[i] = number; 
+                if (number.ToString() == board[number - 1] && Array.IndexOf(numberInserted, number) == -1) win = true;
             }
             Console.WriteLine(win ? "You have made " + (int)type + " in a row!" : "You haven't made " + (int)type + " in a row!");
         }
