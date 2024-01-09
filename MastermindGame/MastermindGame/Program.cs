@@ -104,7 +104,7 @@ namespace MastermindGame
                 {
                     Console.WriteLine($"Congrats you won in {i+1} Attempts!");
                     Thread.Sleep(2000); // Delay then go into the Main Menu
-                    break;
+                    return;
                 } else
                 {
                     // Prints the Hints
@@ -177,12 +177,11 @@ namespace MastermindGame
             }
 
             numbersWrongPlace -= numbersRightPlace; // If the number is contained but also right it will remove it from the wrong counter
-            
+
             // Set messages
             hintsFormatted[0] = $"You got {numbersRightPlace} digit in the Right Place";
             hintsFormatted[1] = $"You got {numbersWrongPlace} digit in the Wrong Place";
 
-            Console.WriteLine(string.Join(", ", code));
 
             // return things (out + return)
             hints = hintsFormatted;
