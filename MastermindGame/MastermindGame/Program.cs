@@ -15,6 +15,7 @@ namespace MastermindGame
         // Enum for the attempts
         enum Difficulty
         {
+            Extreme = 1,
             Hard = 3, // This means 3 Attempts
             Medium = 6,
             Easy = 9
@@ -66,6 +67,7 @@ namespace MastermindGame
             Console.WriteLine($"[1] Easy | Attemps: {(int) Difficulty.Easy}");
             Console.WriteLine($"[2] Medium | Attemps: {(int)Difficulty.Medium}");
             Console.WriteLine($"[3] Hard | Attemps: {(int)Difficulty.Hard}");
+            Console.WriteLine($"[4] Extreme | Attemps: {(int)Difficulty.Extreme}");
 
             char choice = Console.ReadKey(true).KeyChar; // Get a Char from the Keyboard
             switch (choice)
@@ -77,7 +79,10 @@ namespace MastermindGame
                     currentDifficulty = Difficulty.Medium; // Set to Medium
                     break;
                 case '3':
-                    currentDifficulty= Difficulty.Hard; // Set to Hard
+                    currentDifficulty = Difficulty.Hard; // Set to Hard
+                    break;
+                case '4':
+                    currentDifficulty = Difficulty.Extreme; // Set to Extreme
                     break;
             }
         }
@@ -176,6 +181,8 @@ namespace MastermindGame
             // Set messages
             hintsFormatted[0] = $"You got {numbersRightPlace} digit in the Right Place";
             hintsFormatted[1] = $"You got {numbersWrongPlace} digit in the Wrong Place";
+
+            Console.WriteLine(string.Join(", ", code));
 
             // return things (out + return)
             hints = hintsFormatted;
