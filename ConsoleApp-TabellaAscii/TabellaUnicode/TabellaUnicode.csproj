@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{94A3066A-6688-417F-B2F3-56921021F111}</ProjectGuid>
+    <ProjectGuid>{9C350EE1-4B8D-48A7-BAE8-C35947CCA8E8}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>DisplayAsciiAndUnicodeTable</RootNamespace>
-    <AssemblyName>DisplayAsciiAndUnicodeTable</AssemblyName>
+    <RootNamespace>TabellaUnicode</RootNamespace>
+    <AssemblyName>TabellaUnicode</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
