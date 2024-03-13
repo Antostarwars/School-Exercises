@@ -1,0 +1,106 @@
+﻿<Window x:Class="WpfAppCalcolatrice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppCalcolatrice"
+        mc:Ignorable="d"
+        Title="Bitwise Calculator by Antonio De Rosa 3H" Height="450" Width="800" Background="#FF4A5759">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" StrokeDashArray="1 2" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" SnapsToDevicePixels="true" StrokeThickness="1"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="15" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <TabControl Background="#FFAEC3B0">
+            <TabItem Header="Main">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="#FFF0F0F0"/>
+                        <GradientStop Color="#FFAEC3B0" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="White">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="791*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="Shifter" HorizontalAlignment="Left" Height="35" Margin="356,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" Background="#FFDFDFDF"/>
+                    <Button x:Name="Zero" Content="0" HorizontalAlignment="Left" Height="35" Margin="221,60,0,0" VerticalAlignment="Top" Width="40" Click="Button0_Click" FontSize="24" Background="White"/>
+                    <Button x:Name="One" Content="1" HorizontalAlignment="Left" Height="35" Margin="266,60,0,0" VerticalAlignment="Top" Width="40" FontSize="24" Click="One_Click" Background="White"/>
+                    <Button x:Name="Shit_left" Content="&lt;&lt;" HorizontalAlignment="Left" Height="35" Margin="311,60,0,0" VerticalAlignment="Top" Width="40" FontSize="24" Click="Shit_left_Click" Background="White"/>
+                    <Button x:Name="Shit_right" Content="&gt;&gt;" HorizontalAlignment="Left" Height="35" Margin="411,60,0,0" VerticalAlignment="Top" Width="40" FontSize="24" Click="Shit_right_Click" Background="White"/>
+                    <Button x:Name="Not" Content="NOT" HorizontalAlignment="Left" Height="35" Margin="456,60,0,0" VerticalAlignment="Top" Width="50" FontSize="24" Click="Not_Click" Background="White"/>
+                    <TextBlock x:Name="Text" HorizontalAlignment="Left" Margin="100,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="116" FontSize="24"/>
+                    <Button x:Name="Reset" Content="RESET" HorizontalAlignment="Left" Height="35" Margin="539,60,0,0" VerticalAlignment="Top" Width="107" FontSize="24" Click="REset" Background="White"/>
+                    <TextBlock x:Name="Text_Copy" HorizontalAlignment="Left" Margin="100,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="116" FontSize="24"/>
+                    <Button x:Name="Zero_Copy" Content="0" HorizontalAlignment="Left" Height="36" Margin="221,145,0,0" VerticalAlignment="Top" Width="40" Click="Button02_Click" FontSize="24" Background="White"/>
+                    <Button x:Name="One_Copy" Content="1" HorizontalAlignment="Left" Height="35" Margin="266,145,0,0" VerticalAlignment="Top" Width="40" FontSize="24" Click="One2_Click" Background="White"/>
+                    <Button x:Name="Shit_left_Copy" Content="&lt;&lt;" HorizontalAlignment="Left" Height="35" Margin="311,145,0,0" VerticalAlignment="Top" Width="40" FontSize="24" Click="Shit_left_Click2" Background="White"/>
+                    <TextBox x:Name="Shifter2" HorizontalAlignment="Left" Height="35" Margin="356,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.513,0.431" Background="#FFDFDFDF"/>
+                    <Button x:Name="Shit_right_Copy" Content="&gt;&gt;" HorizontalAlignment="Left" Height="35" Margin="411,145,0,0" VerticalAlignment="Top" Width="40" FontSize="24" Click="Shit_right_Click2" Background="White"/>
+                    <Button x:Name="Not_Copy" Content="NOT" HorizontalAlignment="Left" Height="35" Margin="456,145,0,0" VerticalAlignment="Top" Width="50" FontSize="24" Click="Not_Click2" Background="White"/>
+                    <Button x:Name="Reset_Copy" Content="RESET" HorizontalAlignment="Left" Height="35" Margin="539,145,0,0" VerticalAlignment="Top" Width="107" FontSize="24" Click="REset2" Background="White"/>
+                    <Button x:Name="And" Content="AND" HorizontalAlignment="Left" Height="35" Margin="231,249,0,0" VerticalAlignment="Top" Width="75" FontSize="24" Click="AND" Background="White"/>
+                    <Button x:Name="Or" Content="OR" HorizontalAlignment="Left" Height="35" Margin="322,249,0,0" VerticalAlignment="Top" Width="75" FontSize="24" Click="OR" Background="White"/>
+                    <Button x:Name="Xor" Content="XOR" HorizontalAlignment="Left" Height="35" Margin="411,249,0,0" VerticalAlignment="Top" Width="75" FontSize="24" Click="XOR" Background="White"/>
+                    <TextBlock x:Name="Result" HorizontalAlignment="Left" Margin="302,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="116" FontSize="24"/>
+                    <Label Content="Bitwise Calculator by Antonio De Rosa 3H" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
