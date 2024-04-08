@@ -36,7 +36,7 @@
             return;
         }
 
-        public double getAverage(Subject subject)
+        public double getAverageBy(Subject subject)
         {
             if (grades.ContainsKey(subject))
             {
