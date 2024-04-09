@@ -43,7 +43,6 @@
             }
 
             distance[source] = 0;
-           
         }
     }
 }
