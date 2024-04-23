@@ -1,0 +1,36 @@
+﻿<Window x:Class="LoginManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoginManager"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Content="LOGIN" HorizontalAlignment="Left" Margin="19,13,0,0" VerticalAlignment="Top" Width="201" FontWeight="Bold" FontSize="36"/>
+        <TextBox x:Name="UsernameBox" HorizontalAlignment="Left" Margin="90,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="19,68,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="19,95,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SubmitLogin" Content="Submit" HorizontalAlignment="Left" Margin="19,126,0,0" VerticalAlignment="Top" Height="27" Width="69" Click="SubmitLogin_Click"/>
+        <Label Content="REGISTER" HorizontalAlignment="Left" Margin="19,173,0,0" VerticalAlignment="Top" Width="201" FontWeight="Bold" FontSize="36"/>
+        <TextBox x:Name="NameRegister" HorizontalAlignment="Left" Margin="95,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="UsernameRegister" HorizontalAlignment="Left" Margin="95,297,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="SurnameRegister" HorizontalAlignment="Left" Margin="95,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="42,240,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.768,0.653"/>
+        <Label Content="Surname:" HorizontalAlignment="Left" Margin="29,266,0,0" VerticalAlignment="Top"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="24,293,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="24,324,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SubmitRegister" Content="Submit" HorizontalAlignment="Left" Margin="30,382,0,0" VerticalAlignment="Top" Height="27" Width="69" Click="SubmitRegister_Click"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="90,99,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Confirm Password:" HorizontalAlignment="Left" Margin="24,350,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="ConfirmPasswordRegister" HorizontalAlignment="Left" Margin="137,354,0,0" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="PasswordRegister" HorizontalAlignment="Left" Margin="91,328,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="DELETE" HorizontalAlignment="Left" Margin="475,13,0,0" VerticalAlignment="Top" Width="201" FontWeight="Bold" FontSize="36"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="475,76,0,0" VerticalAlignment="Top"/>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="477,103,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="UsernameDelete" HorizontalAlignment="Left" Margin="546,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="PasswordDelete" HorizontalAlignment="Left" Margin="544,107,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="SubmitDelete" Content="Submit" HorizontalAlignment="Left" Margin="477,134,0,0" VerticalAlignment="Top" Height="27" Width="69" Click="SubmitDelete_Click"/>
+
+    </Grid>
+</Window>

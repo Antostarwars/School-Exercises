@@ -26,6 +26,7 @@ namespace Crossword
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            // Open file dialog to choose a file.
             var dialog = new OpenFileDialog();
             dialog.FileName = "Document";
             dialog.DefaultExt = ".txt";
@@ -34,6 +35,8 @@ namespace Crossword
             if (result == null || result == false) return;
             filename = dialog.FileName;
             string[] s1;
+
+            // Read input file and load everything.
             using(StreamReader reader = new StreamReader(filename))
             {
                 string s = reader.ReadToEnd();
@@ -62,6 +65,7 @@ namespace Crossword
                 }
             }
             i++;
+            // Check for an invalid file.
             if (s1.Length - h <= 0)
             {
                 MessageBox.Show("Invalid file.");
@@ -76,11 +80,13 @@ namespace Crossword
                 wordsList.Text += words[i - h - 1] + "\n";
             }
 
+            // Create grid of buttons
             CreateGrid();
         }
 
         private void solveButton_Click(object sender, RoutedEventArgs e)
         {
+            // Check if a file has been loaded.
             if (!loaded)
             {
                 MessageBox.Show("Load a valid text file first.");
@@ -89,6 +95,7 @@ namespace Crossword
 
             found = new bool[w, h];
 
+            // Search for words in the grid.
             foreach(string s in words)
             {
                 for(int i = 0; i < w; i++)
@@ -115,11 +122,13 @@ namespace Crossword
                 }
             }
 
+            // Show the solution.
             MessageBox.Show("La soluzione è: " + sol);
         }
 
         bool Search(int x, int y, int xDir, int yDir, string word)
         {
+            // Check if the word can be found in the grid.
             int x1 = x, y1 = y;
             for(int i = 0; i < word.Length; i++)
             {
@@ -130,7 +139,7 @@ namespace Crossword
                 }
                 else return false;
             }
-            //if found traceback
+            // Highlight the word in the grid.
 
             for (int i = 0; i < word.Length; i++)
             {
@@ -144,6 +153,7 @@ namespace Crossword
 
         private void CreateGrid()
         {
+            // Create a grid of buttons.
             buttons = new Button[h, w];
             buttonGrid.Height = h * 30;
             buttonGrid.Width = w * 30;
@@ -166,7 +176,7 @@ namespace Crossword
                     buttonGrid.Children.Add(b);
                 }
             }
-
+            // Set loaded to true.
             loaded = true;
         }
 
