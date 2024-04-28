@@ -13,7 +13,13 @@ namespace LoginManager
         private string username;
         private string password;
 
-        // TODO: AGGIUNGERE I COMMENTI CHE VUOLE IL PROF
+        /// <summary>
+        /// Class Constructor
+        /// </summary>
+        /// <param name="name">Name of the user</param>
+        /// <param name="surname">Surname of the user</param>
+        /// <param name="username">Username of the user</param>
+        /// <param name="password">Password of the user</param>
         public Account(string name, string surname, string username, string password)
         {
             this.name = name;
