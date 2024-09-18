@@ -16,8 +16,10 @@
 
             for (int i = 0; i < dates.Length; i++)
             {
-                for (int j = i+1; j < dates.Length; j++)
+                for (int j = 0; j < dates.Length; j++)
                 {
+                    if (i == j) continue;
+
                     TimeSpan distance = dates[i] - dates[j];
                     if (distance.TotalSeconds < bestDistance)
                     {
