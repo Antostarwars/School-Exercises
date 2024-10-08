@@ -50,8 +50,7 @@ namespace OperatorOverriding
         public static RationalNumber operator *(RationalNumber a, RationalNumber b) { return new RationalNumber(a.num * b.num, a.den * b.den); }
         public static RationalNumber operator /(RationalNumber a, RationalNumber b)
         {
-            if (b.num == 0)
-                throw new DivideByZeroException();
+            if (b.num == 0) throw new DivideByZeroException();
             return new RationalNumber(a.num * b.den, a.den * b.num); 
         }
         public static bool operator <(RationalNumber a, RationalNumber b) { return a.num * b.den < b.num * a.den; }
