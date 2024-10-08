@@ -20,7 +20,7 @@ namespace OperatorOverriding
 
         public RationalNumber(int num, int den)
         {
-            if (num == 0)
+            if (den == 0)
                 throw new Exception("Invalid denominator value");
 
             this.num = num;
@@ -29,6 +29,7 @@ namespace OperatorOverriding
             Normalize();
         }
         public RationalNumber(int number) : this(number, 1) { }
+        public RationalNumber(RationalNumber number) : this(number.num, number.den) { }
         public RationalNumber() : this(0, 1) { }
         private void Normalize()
         {
@@ -44,18 +45,23 @@ namespace OperatorOverriding
             den /= MCD;
         }
 
-        public static RationalNumber operator +(RationalNumber a, RationalNumber b) => new RationalNumber(a.num * b.den + b.num * a.den, a.den * b.den);
-        public static RationalNumber operator -(RationalNumber a, RationalNumber b) => new RationalNumber(a.num * b.den - b.num * a.den, a.den * b.den);
-        public static RationalNumber operator *(RationalNumber a, RationalNumber b) => new RationalNumber(a.num * b.num, a.den * b.den);
-        public static RationalNumber operator /(RationalNumber a, RationalNumber b) => new RationalNumber(a.num * b.den, a.den * b.num);
-        public static bool operator <(RationalNumber a, RationalNumber b) => a.num * b.den < b.num * a.den;
-        public static bool operator >(RationalNumber a, RationalNumber b) => b < a;
-        public static bool operator <=(RationalNumber a, RationalNumber b) => a.num * b.den <= b.num * a.den;
-        public static bool operator >=(RationalNumber a, RationalNumber b) => b <= a;
-        public static bool operator ==(RationalNumber a, RationalNumber b) => a.num == b.num && a.den == b.den;
-        public static bool operator !=(RationalNumber a, RationalNumber b) => !(a == b);
-        public static RationalNumber operator ++(RationalNumber a) => new RationalNumber(a.num + a.den, a.den);
-        public static RationalNumber operator --(RationalNumber a) => new RationalNumber(a.num - a.den, a.den);
+        public static RationalNumber operator +(RationalNumber a, RationalNumber b) { return new RationalNumber(a.num * b.den + b.num * a.den, a.den * b.den); }
+        public static RationalNumber operator -(RationalNumber a, RationalNumber b) { return new RationalNumber(a.num * b.den - b.num * a.den, a.den * b.den); }
+        public static RationalNumber operator *(RationalNumber a, RationalNumber b) { return new RationalNumber(a.num * b.num, a.den * b.den); }
+        public static RationalNumber operator /(RationalNumber a, RationalNumber b)
+        {
+            if (b.num == 0)
+                throw new DivideByZeroException();
+            return new RationalNumber(a.num * b.den, a.den * b.num); 
+        }
+        public static bool operator <(RationalNumber a, RationalNumber b) { return a.num * b.den < b.num * a.den; }
+        public static bool operator >(RationalNumber a, RationalNumber b) { return b < a; }
+        public static bool operator <=(RationalNumber a, RationalNumber b) { return a.num * b.den <= b.num * a.den; }
+        public static bool operator >=(RationalNumber a, RationalNumber b) { return b <= a; }
+        public static bool operator ==(RationalNumber a, RationalNumber b) { return a.num == b.num && a.den == b.den; }
+        public static bool operator !=(RationalNumber a, RationalNumber b) { return !(a == b); }
+        public static RationalNumber operator ++(RationalNumber a) { return new RationalNumber(a.num + a.den, a.den); }
+        public static RationalNumber operator --(RationalNumber a) { return new RationalNumber(a.num - a.den, a.den); }
 
         public override string ToString()
         {
