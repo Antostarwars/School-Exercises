@@ -34,16 +34,6 @@
             if (head == null)
                 throw new NullReferenceException("List is empty.");
 
-            /*Node n = head;
-            for (int i = 0; i < idx; ++i)
-            {
-                if (n == null)
-                    throw new ArgumentOutOfRangeException("idx");
-                n = n.next;
-            }
-
-            return n.value;*/
-
             int i = 0;
             Node n = head;
             while (n != null)
