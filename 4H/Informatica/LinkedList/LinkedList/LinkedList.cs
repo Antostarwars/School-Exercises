@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LinkedList
+﻿namespace LinkedList
 {
     class LinkedList
     {
@@ -40,7 +34,7 @@ namespace LinkedList
             if (head == null)
                 throw new NullReferenceException("List is empty.");
 
-            Node n = head;
+            /*Node n = head;
             for (int i = 0; i < idx; ++i)
             {
                 if (n == null)
@@ -48,7 +42,19 @@ namespace LinkedList
                 n = n.next;
             }
 
-            return n.value; 
+            return n.value;*/
+
+            int i = 0;
+            Node n = head;
+            while (n != null)
+            {
+                if (i == idx)
+                    return n.value;
+                n = n.next;
+                ++i;
+            }
+
+            throw new IndexOutOfRangeException();
         }
 
         public void Set(int idx, int val)
@@ -103,13 +109,21 @@ namespace LinkedList
                 return;
             }
 
-            Node prev = head;
-            for (int i = 0; i < idx - 1; ++i)
+            Node n = head;
+            int i = 1;
+            while (n.next != null)
             {
-                if (prev == null)
-                    throw new ArgumentOutOfRangeException("idx");
-                prev = prev.next;
+                if (i == idx)
+                {
+                    n.next = n.next.next;
+                    return;
+                }
+
+                i++;
+                n = n.next;
             }
+
+            throw new IndexOutOfRangeException();
         }
         public void RemoveValue(int value)
         {
