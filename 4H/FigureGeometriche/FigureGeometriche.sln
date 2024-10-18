@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FigureGeometriche", "FigureGeometriche\FigureGeometriche.csproj", "{746D3AE8-B4E4-4150-860D-920F15AE923C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{746D3AE8-B4E4-4150-860D-920F15AE923C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{746D3AE8-B4E4-4150-860D-920F15AE923C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{746D3AE8-B4E4-4150-860D-920F15AE923C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{746D3AE8-B4E4-4150-860D-920F15AE923C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7F847084-B228-4A39-96A1-E1B0C6B83CBF}
+	EndGlobalSection
+EndGlobal
