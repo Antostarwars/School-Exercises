@@ -90,7 +90,6 @@
 
     class Rombo : FiguraGeometrica
     {
-        protected double lato1, lato2;
         protected double diagonaleMinore, diagonaleMaggiore;
 
         public Rombo(double diagonaleMinore, double diagonaleMaggiore)
