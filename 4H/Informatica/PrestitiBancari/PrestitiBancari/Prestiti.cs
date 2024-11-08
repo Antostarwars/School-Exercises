@@ -22,8 +22,8 @@
         public string CodiceFiscale { get { return codiceFiscale; } }
 
         public double Rata { get { return (Montante / Durata) / 12; } }
-        public double Durata { get { return (dataFine.DayNumber - dataInizio.DayNumber) / 360; } }
-        public virtual double Montante { get { return capitale * (1 + Durata * interesse); } }
+        public double Durata { get { return (dataFine.DayNumber - dataInizio.DayNumber) / 365; } }
+        public virtual double Montante { get { return capitale * (1 + Durata * interesse) / 12; } }
 
         public override string ToString()
         {
@@ -39,6 +39,6 @@
 
         }
 
-        public override double Montante { get { return Math.Pow(Capitale * (1+Interesse), Durata); } }
+        public override double Montante { get { return Capitale * Math.Pow(1+Interesse, Durata); } }
     }
 }
