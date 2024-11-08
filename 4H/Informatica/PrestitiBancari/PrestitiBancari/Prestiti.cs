@@ -31,9 +31,9 @@
         }
     }
 
-    public class PrestitoComplesso : PrestitoSemplice
+    public class PrestitoComposto : PrestitoSemplice
     {
-        public PrestitoComplesso(double capitale, double interesse, DateOnly dataInizio, DateOnly dataFine, string codiceFiscale)
+        public PrestitoComposto(double capitale, double interesse, DateOnly dataInizio, DateOnly dataFine, string codiceFiscale)
             : base(capitale, interesse, dataInizio, dataFine, codiceFiscale)
         {
 

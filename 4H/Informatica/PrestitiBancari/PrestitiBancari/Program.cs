@@ -17,7 +17,7 @@
 
             // Creazione di alcuni prestiti
             PrestitoSemplice prestito1 = new PrestitoSemplice(10000, 0.05, new DateOnly(2023, 1, 1), new DateOnly(2025, 1, 1), "RSSMRA80A01H501Z");
-            PrestitoComplesso prestito2 = new PrestitoComplesso(20000, 0.04, new DateOnly(2023, 1, 1), new DateOnly(2026, 1, 1), "VRDLGU85B01H501Y");
+            PrestitoComposto prestito2 = new PrestitoComposto(20000, 0.04, new DateOnly(2023, 1, 1), new DateOnly(2026, 1, 1), "VRDLGU85B01H501Y");
 
             // Aggiunta dei prestiti ai clienti
             banca.AggiungiPrestito(prestito1);
