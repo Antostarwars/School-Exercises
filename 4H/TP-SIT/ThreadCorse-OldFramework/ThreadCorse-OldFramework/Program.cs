@@ -3,8 +3,11 @@
  * 4H Ultimo Aggiornamento: 2024-11-11 | Primo Aggiornamento: 2024-11-04
  * Programmazione usando I Thread, Simulazione di una corsa.
  */
+using System;
+using System.Net;
+using System.Threading;
 
-namespace ThreadCorsa
+namespace ThreadCorse_OldFramework
 {
     internal class Program
     {
@@ -20,7 +23,7 @@ namespace ThreadCorsa
         static Thread thBaldo;
         static Thread thCarlo;
 
-        static string comando;
+        static string comando = "";
 
         static void Pronti()
         {
@@ -54,8 +57,25 @@ namespace ThreadCorsa
 
         static void Andrea()
         {
+            thAndrea.Name = "Andrea";
             do
             {
+                if (comando.Length == 3)
+                    if (comando[1] == 'J' && comando[0] == 'A')
+                    {
+                        switch (comando[2])
+                        {
+                            case 'B':
+                                thBaldo.Join();
+                                break;
+                            case 'C':
+                                thCarlo.Join();
+                                break;
+                        }
+                        ResetMenu();
+                    }
+
+                // Posizione Successiva animazione
                 posAndrea++;
                 Thread.Sleep(50); // Attesa di 50 millisecondi per simulare l'animazione
                 lock (lockConsole)
@@ -87,8 +107,23 @@ namespace ThreadCorsa
 
         static void Baldo()
         {
+            thBaldo.Name = "Baldo";
             do
             {
+                if (comando.Length == 3)
+                    if (comando[1] == 'J' && comando[0] == 'B')
+                    {
+                        switch (comando[2])
+                        {
+                            case 'A':
+                                thAndrea.Join();
+                                break;
+                            case 'C':
+                                thCarlo.Join();
+                                break;
+                        }
+                        ResetMenu();
+                    }
                 posBaldo++;
                 Thread.Sleep(50); // Attesa di 50 millisecondi per simulare l'animazione
                 lock (lockConsole)
@@ -121,8 +156,23 @@ namespace ThreadCorsa
 
         static void Carlo()
         {
+            thCarlo.Name = "Carlo";
             do
             {
+                if (comando.Length == 3)
+                    if (comando[1] == 'J' && comando[0] == 'C')
+                    {
+                        switch (comando[2])
+                        {
+                            case 'A':
+                                thAndrea.Join();
+                                break;
+                            case 'B':
+                                thBaldo.Join();
+                                break;
+                        }
+                        ResetMenu();
+                    }
                 posCarlo++;
                 Thread.Sleep(50); // Attesa di 50 millisecondi per simulare l'animazione
                 lock (lockConsole)
@@ -184,7 +234,8 @@ namespace ThreadCorsa
             // Aggiorna gli stati alla fine di tutto.
             AggiornaStati();
             Console.SetCursorPosition(0, 15);
-            Console.WriteLine();
+            Console.WriteLine("");
+            Console.ReadKey();
         }
 
         static void AggiornaStati()
@@ -193,11 +244,11 @@ namespace ThreadCorsa
             {
                 // Scrive lo stato dei thread.
                 Console.SetCursorPosition(0, 2);
-                Console.Write($"Andrea -> {thAndrea.ThreadState}      ");
+                Console.Write($"Andrea -> {thAndrea.ThreadState}                                      ");
                 Console.SetCursorPosition(0, 6);
-                Console.Write($"Baldo -> {thBaldo.ThreadState}      ");
+                Console.Write($"Baldo -> {thBaldo.ThreadState}                                      ");
                 Console.SetCursorPosition(0, 10);
-                Console.Write($"Carlo -> {thCarlo.ThreadState}      ");
+                Console.Write($"Carlo -> {thCarlo.ThreadState}                                      ");
 
                 // Scrive se i thread sono Alive o no.
                 // stato di Andrea
@@ -252,13 +303,13 @@ namespace ThreadCorsa
 
             comando += choice;
             // Legge l'azione da intraprendere
-            choice = MenuAzioni();
+            choice = MenuAzioni(thAzione.Name);
             switch (choice)
             {
                 case 'S':
                     lock (lockConsole)
                     {
-                        if (thAzione.ThreadState == ThreadState.Running)
+                        if (thAzione.ThreadState == ThreadState.Running || thAzione.ThreadState == ThreadState.WaitSleepJoin)
                             thAzione.Suspend();
                     }
                     break;
@@ -267,28 +318,36 @@ namespace ThreadCorsa
                         thAzione.Resume();
                     break;
                 case 'A':
-                    lock (lockConsole)
-                    {
-                        if (thAzione.ThreadState != ThreadState.Aborted)
-                            thAzione.Abort();
-                    }
+                    if (thAzione.ThreadState.Equals(ThreadState.Running) || thAzione.ThreadState.Equals(ThreadState.WaitSleepJoin))
+                        thAzione.Abort();
                     break;
                 case 'J':
+                    comando += choice;
                     lock (lockConsole)
                     {
-                        thAzione.Join();
+                        Console.SetCursorPosition(80, 20);
+                        Console.WriteLine($"[ Chi Aspetta {thAzione.Name}? ]:     ");
+                        Console.SetCursorPosition(80, 21);
+                        Console.WriteLine("Andrea (A)");
+                        Console.SetCursorPosition(80, 22);
+                        Console.WriteLine("Baldo (B)");
+                        Console.SetCursorPosition(80, 23);
+                        Console.WriteLine("Carlo (C)");
                     }
+                    choice = char.ToUpper(Console.ReadKey(true).KeyChar);
+                    comando += choice;
                     break;
             }
+            ResetMenu();
         }
 
-        static char MenuAzioni()
+        static char MenuAzioni(string name)
         {
             // Scrive il menu azioni
             lock (lockConsole)
             {
                 Console.SetCursorPosition(40, 20);
-                Console.WriteLine("[ Menu Azioni ]:");
+                Console.WriteLine($"[ Menu Azioni per {name} ]:     ");
                 Console.SetCursorPosition(40, 21);
                 Console.WriteLine("Sospendere (S)");
                 Console.SetCursorPosition(40, 22);
@@ -301,6 +360,23 @@ namespace ThreadCorsa
                 char c = char.ToUpper(Console.ReadKey(true).KeyChar);
 
                 return c;
+            }
+        }
+
+        static void ResetMenu()
+        {
+            lock (lockConsole)
+            {
+                Console.SetCursorPosition(40, 20);
+                Console.WriteLine("                                                                                                                               ");
+                Console.SetCursorPosition(40, 21);
+                Console.WriteLine("                                                                                                                               ");
+                Console.SetCursorPosition(40, 22);
+                Console.WriteLine("                                                                                                                               ");
+                Console.SetCursorPosition(40, 23);
+                Console.WriteLine("                                                                                                                               ");
+                Console.SetCursorPosition(40, 24);
+                Console.WriteLine("                                                                                                                               ");
             }
         }
     }

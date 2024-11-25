@@ -1,0 +1,29 @@
+﻿                             |     | Stato Treno 1      |     | Stato Treno 2
+                             |     |                    |     |              
+                             |     | Is Alive =         |     | Is Alive =   
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                            ┌ ┐   ┌ ┐                  ┌ ┐   ┌ ┐             
+                            └ ┘   └ ┘                  └ ┘   └ ┘             
+ @                                                                           
+/█\                                                                          
+/ \                                                                          
+                            ┌ ┐   ┌ ┐                  ┌ ┐   ┌ ┐             
+                            └ ┘   └ ┘                  └ ┘   └ ┘             
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+                             |     |                    |     |              
+ (S) Suspend Pedone          |     |                    |     |              
+ (R) Resume Pedone           |     |                    |     |              
+ (A) Abort Pedone            |     |                    |     |              
+                             |     |                    |     | Stato Pedone 
+                             |     |                    |     |              
