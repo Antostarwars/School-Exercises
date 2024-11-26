@@ -12,8 +12,13 @@
                 <Canvas.Background>
                     <ImageBrush ImageSource="/Images/background.jpg"/>
                 </Canvas.Background>
+                <Image x:Name="immaginePesceDefault" Height="100" Canvas.Left="161" Canvas.Top="138" Width="100" Source="/Images/fish-1.png" RenderTransformOrigin="0.493,0.54"/>
             </Canvas>
             <Label x:Name="LabelContatore" Content="Pesci nell'acquario: 0" Canvas.Left="10" Canvas.Top="26" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="TranslateButton" Content="Muovi" Canvas.Top="52" Click="TranslateButton_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="136" Canvas.Left="2"/>
+            <Button x:Name="RotateButton" Content="Ruota" Canvas.Top="80" HorizontalAlignment="Center" VerticalAlignment="Top" Width="136" Canvas.Left="2" Click="RotateButton_Click"/>
+            <Button x:Name="ScaleButton" Content="Ingrandisci" Canvas.Top="108" Width="136" Canvas.Left="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ScaleButton_Click"/>
+
         </Canvas>
 
     </Grid>
