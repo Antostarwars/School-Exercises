@@ -12,6 +12,11 @@
     <None Remove="Images\background.jpg" />
     <None Remove="Images\fish-1.png" />
     <None Remove="Images\fish-2.png" />
+    <None Remove="Images\fish-3.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AcquarioLib\AcquarioLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,6 +27,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\fish-2.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\fish-3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

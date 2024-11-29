@@ -1,23 +1,24 @@
-﻿<Window x:Class="AquarioWPF.MainWindow"
+﻿<Window x:Class="AcquarioWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AquarioWPF"
+        xmlns:local="clr-namespace:AcquarioWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Antonio De Rosa 4H - Acquario WPF" Height="450" Width="800" Icon="/Images/fish-2.png">
     <Grid>
         <Canvas Margin="0,0,0,-13">
             <Canvas x:Name="CanvasAcquario" Height="434" Width="659" HorizontalAlignment="Left" Canvas.Left="141" VerticalAlignment="Center">
                 <Canvas.Background>
                     <ImageBrush ImageSource="/Images/background.jpg"/>
                 </Canvas.Background>
-                <Image x:Name="immaginePesceDefault" Height="100" Canvas.Left="161" Canvas.Top="138" Width="100" Source="/Images/fish-1.png" RenderTransformOrigin="0.493,0.54"/>
+                <Image x:Name="immaginePesceDefault" Height="100" Canvas.Left="161" Canvas.Top="138" Width="100" Source="/Images/fish-3.png" RenderTransformOrigin="0.493,0.54"/>
             </Canvas>
             <Label x:Name="LabelContatore" Content="Pesci nell'acquario: 0" Canvas.Left="10" Canvas.Top="26" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <Button x:Name="TranslateButton" Content="Muovi" Canvas.Top="52" Click="TranslateButton_Click" HorizontalAlignment="Left" VerticalAlignment="Center" Width="136" Canvas.Left="2"/>
             <Button x:Name="RotateButton" Content="Ruota" Canvas.Top="80" HorizontalAlignment="Center" VerticalAlignment="Top" Width="136" Canvas.Left="2" Click="RotateButton_Click"/>
             <Button x:Name="ScaleButton" Content="Ingrandisci" Canvas.Top="108" Width="136" Canvas.Left="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="ScaleButton_Click"/>
+            <Button x:Name="TranformButton" Content="Trasforma" Canvas.Top="138" Width="136" Canvas.Left="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="TranformButton_Click"/>
 
         </Canvas>
 

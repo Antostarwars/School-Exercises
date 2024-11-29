@@ -5,9 +5,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 // Antonio De Rosa 4H - Acquario WPF 2024-11-22 
-namespace AquarioWPF
+namespace AcquarioWPF
 {
-
     public partial class MainWindow : Window
     {
         private const int TICK_MILLISECONDS = 1000;
@@ -78,9 +77,25 @@ namespace AquarioWPF
         private void ScaleButton_Click(object sender, RoutedEventArgs e)
         {
             Image fish = CanvasAcquario.FindName("immaginePesceDefault") as Image ?? throw new Exception("Image not exists");
-
-            ScaleTransform scale = new ScaleTransform(scalaX++, scalaY++, 0, 0);
+            scalaX += 0.1;
+            scalaY += 0.1;
+            ScaleTransform scale = new ScaleTransform(scalaX, scalaY, 0, 0);
             fish.RenderTransform = scale;
+        }
+
+        private void TranformButton_Click(object sender, RoutedEventArgs e)
+        {
+            TransformGroup group = new TransformGroup();
+
+            ScaleTransform scale = new ScaleTransform(scalaX, scalaY, 0, 0);
+            TranslateTransform translate = new TranslateTransform(x, y);
+            RotateTransform rotate = new RotateTransform(gradi, 0, 0);
+
+            group.Children.Add(scale);
+            group.Children.Add(rotate);
+            group.Children.Add(scale);
+
+            immaginePesceDefault.RenderTransform = group;
         }
     }
 }
