@@ -1,5 +1,2 @@
 Classi:
 Inanimato -> AnimatoSulPosto -> AnimatoSulFondo -> AnimatoInAcqua -> AnimatoPilotato -> AnimatoPilotatoSilurato.
-
-Acquario:
-Contiene gli oggetti dell'acquario.

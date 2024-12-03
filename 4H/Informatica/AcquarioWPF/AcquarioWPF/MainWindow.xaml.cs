@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using AcquarioLib;
 
 // Antonio De Rosa 4H - Acquario WPF 2024-11-22 
 namespace AcquarioWPF
@@ -18,7 +19,9 @@ namespace AcquarioWPF
         {
             InitializeComponent();
             SetupTimer();
-            AddFish(new Uri("pack://application:,,,/Images/fish-2.png"));
+            //AddFish(new Uri("pack://application:,,,/Images/fish-2.png"));
+            AnimatoSulPosto alga = new AnimatoSulPosto("fish-2", new Thickness(0,0,0,0), 100, 100, new Size(100,100), 500);
+            alga.AggiungiOggetto(CanvasAcquario);
         }
 
         private void SetupTimer()

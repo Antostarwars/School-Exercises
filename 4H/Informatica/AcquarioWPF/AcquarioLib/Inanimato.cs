@@ -1,21 +1,28 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 
 namespace AcquarioLib
 {
     public class Inanimato
     {
-        protected const string IMAGE_PATH = "pack://application:,,,/Images/fish-2.png";
+        protected const string IMAGE_PATH = "pack://application:,,,/Images/";
 
-        private Image Oggetto;
+        protected Image oggetto;
 
-        public Inanimato(string nome, Thickness margine, int altezza, int larghezza, Size grandezza)
+        public Inanimato(string nomeFile, Thickness margine, int altezza, int larghezza, Size grandezza)
         {
-            // Crea l'oggetto immagine.
+            oggetto = new Image();
+            oggetto.Margin = margine;
+            oggetto.Height = altezza;
+            oggetto.Width = larghezza;
+            oggetto.RenderSize = grandezza;
+            oggetto.Source = new BitmapImage(new System.Uri(IMAGE_PATH + nomeFile + ".png"));
         }
 
-        public bool AggiungiOggetto()
+        public virtual void AggiungiOggetto(Canvas canvas)
         {
+            canvas.Children.Add(oggetto);
         }
     }
 
