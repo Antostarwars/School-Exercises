@@ -9,15 +9,14 @@ namespace AcquarioLib
     {
         private DispatcherTimer timer;
         private double timerTick;
-        private int gradi;
-        private ScaleTransform flip;
+        private ScaleTransform scale;
+
         public AnimatoSulPosto(string nomeFile, Thickness margine, int altezza, int larghezza, Size grandezza, double timerTick)
             : base(nomeFile, margine, altezza, larghezza, grandezza)
         {
             timer = new DispatcherTimer();
-            gradi = 0;
             this.timerTick = timerTick;
-            flip = new ScaleTransform();
+            scale = new ScaleTransform();
         }
 
 
@@ -32,8 +31,8 @@ namespace AcquarioLib
         {
             // Implementa l'animazione 
             oggetto.RenderTransformOrigin = new Point(0.5, 0.5);
-            flip.ScaleX = flip.ScaleX * -1;
-            oggetto.RenderTransform = flip;
+            scale.ScaleX *= -1;
+            oggetto.RenderTransform = scale;
             
         }
         

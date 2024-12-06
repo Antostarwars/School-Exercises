@@ -19,9 +19,14 @@ namespace AcquarioWPF
         {
             InitializeComponent();
             SetupTimer();
-            //AddFish(new Uri("pack://application:,,,/Images/fish-2.png"));
-            AnimatoSulPosto alga = new AnimatoSulPosto("fish-2", new Thickness(0,0,0,0), 100, 100, new Size(100,100), 500);
+
+            // Aggiungo l'alga al centro dell'acquario.
+            AnimatoSulPosto alga = new AnimatoSulPosto("algae-1", new Thickness((CanvasAcquario.Width - 100) / 2, CanvasAcquario.Height - 100, 0, 0), 100, 100, new Size(100,100), 500);
             alga.AggiungiOggetto(CanvasAcquario);
+
+            // Aggiungo un granchio nell'acquario.
+            AnimatoSulFondo granchio = new AnimatoSulFondo("crab-1", new Thickness(0, 0, 0, 0), 100, 100, new Size(100, 100), 500, 0, 600);
+            granchio.AggiungiOggetto(CanvasAcquario);
         }
 
         private void SetupTimer()
