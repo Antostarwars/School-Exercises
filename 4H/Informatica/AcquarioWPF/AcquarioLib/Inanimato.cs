@@ -1,29 +1,29 @@
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace AcquarioLib
 {
     public class Inanimato
     {
-        protected const string IMAGE_PATH = "pack://application:,,,/Images/";
+        protected Canvas canvas;
+        protected TransformGroup transformGroup;
+        public Image Image { get; protected set; }
+        protected DispatcherTimer timer;
 
-        protected Image oggetto;
-
-        public Inanimato(string nomeFile, Thickness margine, int altezza, int larghezza, Size grandezza)
+        public Inanimato(Canvas canvas, Image image, DispatcherTimer timer)
         {
-            oggetto = new Image();
-            oggetto.Margin = margine;
-            oggetto.Height = altezza;
-            oggetto.Width = larghezza;
-            oggetto.RenderSize = grandezza;
-            oggetto.Source = new BitmapImage(new System.Uri(IMAGE_PATH + nomeFile + ".png"));
+            this.canvas = canvas;
+            this.Image = image;
+            this.timer = timer;
+            transformGroup = new TransformGroup();
+            image.RenderTransform = transformGroup;
+            image.RenderTransformOrigin = new Point(0.5, 0.5); // Imposta il punto di rotazione al centro dell'immagine
         }
 
-        public virtual void AggiungiOggetto(Canvas canvas)
-        {
-            canvas.Children.Add(oggetto);
-        }
+        public void AddToCanvas() => canvas.Children.Add(Image);
     }
 
 }

@@ -1,53 +1,53 @@
-﻿using System.Windows;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows;
+using System.Windows.Threading;
+using System.Xaml;
 
 namespace AcquarioLib
 {
     public class AnimatoSulFondo : AnimatoSulPosto
     {
-        private TranslateTransform translate;
-        private ScaleTransform flip;
-        private int inizioX, fineX;
-        private int spostamento;
+        protected double positionX;
+        protected bool isRight;
+        protected int movementAmountX;
 
-        public AnimatoSulFondo(string nomeFile, Thickness margine, int altezza, int larghezza, Size grandezza, double timerTick, int inizioX, int fineX)
-            : base(nomeFile, margine, altezza, larghezza, grandezza, timerTick)
+        public AnimatoSulFondo(Canvas canvas, Image image, DispatcherTimer timer, int movementAmountX = 10)
+            : base(canvas, image, timer)
         {
-            this.translate = new TranslateTransform();
-            this.flip = new ScaleTransform();
-            this.inizioX = inizioX;
-            this.fineX = fineX;
-            this.spostamento = 0;
+            this.movementAmountX = movementAmountX;
+            positionX = 0;
         }
 
-        protected override void Animazione(object sender, EventArgs e)
+        public new virtual void Build()
         {
-            // Implemento la funzione dell'animazione.
-            TransformGroup group = new TransformGroup();
+            SetToBottom(); // Imposta l'immagine in basso
+            timer.Tick += (sender, e) => Animate(); // Aggiunge l'animazione al timer
+        }
 
+        protected override void Animate()
+        {
+            isRight = CheckWidthBounds();
+            positionX += isRight ? movementAmountX : -movementAmountX; // Sposta l'immagine a destra o a sinistra in base alla direzione
+            Canvas.SetLeft(Image, positionX); // Imposta la posizione dell'immagine
+        }
 
-            /*
-            oggetto.RenderTransformOrigin = new Point(0.5, 0.5);
-
-            if (oggetto.Margin.Right >= fineX)
+        protected bool CheckWidthBounds()
+        {
+            if (isRight)
             {
-                spostamento -= 50;
-                translate = new TranslateTransform(spostamento, 0); // Se è alla fine va indietro.
+                if (canvas.RenderSize.Width < positionX + Image.ActualWidth) Flip();
+                return canvas.RenderSize.Width > positionX + Image.ActualWidth;
             } else
             {
-                spostamento += 50;
-                translate = new TranslateTransform(spostamento, 0); // Se è all'inizio va avanti.
-            }*/
-
-            // Renderizzo la transformazione.
-            oggetto.RenderTransform = translate;
-        }
-
-        public override void AggiungiOggetto(Canvas canvas)
-        {
-            oggetto.Margin = new Thickness(oggetto.Margin.Left, canvas.Height - oggetto.Height, oggetto.Margin.Right, oggetto.Margin.Bottom);
-            base.AggiungiOggetto(canvas);
+                if (positionX < 0) Flip();
+                return positionX < 0;
+            }
         }
     }
 }

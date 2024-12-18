@@ -7,39 +7,30 @@ namespace AcquarioLib
 {
     public class AnimatoSulPosto : Inanimato
     {
-        private DispatcherTimer timer;
-        private double timerTick;
-        private ScaleTransform scale;
-
-        public AnimatoSulPosto(string nomeFile, Thickness margine, int altezza, int larghezza, Size grandezza, double timerTick)
-            : base(nomeFile, margine, altezza, larghezza, grandezza)
+        public AnimatoSulPosto(Canvas canvas, Image image, DispatcherTimer timer)
+            : base(canvas, image, timer)
         {
-            timer = new DispatcherTimer();
-            this.timerTick = timerTick;
-            scale = new ScaleTransform();
         }
 
-
-        private void IniziaTimer()
+        protected void SetToBottom()
         {
-            timer.Interval = TimeSpan.FromMilliseconds(timerTick);
-            timer.Tick += new EventHandler(Animazione!);
-            timer.Start();
+            Image.Margin = new Thickness(Image.Margin.Left, canvas.ActualHeight - Image.RenderSize.Height, Image.Margin.Right, 0);
         }
 
-        protected virtual void Animazione(object sender, EventArgs e)
+        protected void Flip()
         {
-            // Implementa l'animazione 
-            oggetto.RenderTransformOrigin = new Point(0.5, 0.5);
-            scale.ScaleX *= -1;
-            oggetto.RenderTransform = scale;
-            
+            transformGroup.Children.Add(new ScaleTransform(-1, 1));
         }
-        
-        public override void AggiungiOggetto(Canvas canvas)
+
+        protected virtual void Animate()
         {
-            IniziaTimer();
-            base.AggiungiOggetto(canvas);
+            SetToBottom();
+            Flip();
+        }
+
+        public void Build()
+        {
+            timer.Tick += (sender, e) => Animate();
         }
     }
 }

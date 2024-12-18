@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="Images\algae-1.png" />
     <None Remove="Images\background.jpg" />
+    <None Remove="Images\bullet-1.png" />
     <None Remove="Images\crab-1.png" />
     <None Remove="Images\fish-1.png" />
     <None Remove="Images\fish-2.png" />
@@ -26,6 +27,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\background.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\bullet-1.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\crab-1.png">

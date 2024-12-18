@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Security.AccessControl;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -10,100 +11,67 @@ namespace AcquarioWPF
 {
     public partial class MainWindow : Window
     {
-        private const int TICK_MILLISECONDS = 1000;
-        DispatcherTimer timer;
-        private int numeroPesci = 0;
-        private Image currentFish;
+        private DispatcherTimer fishTimer, propsTimer;
+        private const string IMAGES_PATH = "pack://application:,,,/Images/";
+        private int fishCounter = 0;
 
         public MainWindow()
         {
             InitializeComponent();
-            SetupTimer();
-
-            // Aggiungo l'alga al centro dell'acquario.
-            AnimatoSulPosto alga = new AnimatoSulPosto("algae-1", new Thickness((CanvasAcquario.Width - 100) / 2, CanvasAcquario.Height - 100, 0, 0), 100, 100, new Size(100,100), 500);
-            alga.AggiungiOggetto(CanvasAcquario);
-
-            // Aggiungo un granchio nell'acquario.
-            AnimatoSulFondo granchio = new AnimatoSulFondo("crab-1", new Thickness(0, 0, 0, 0), 100, 100, new Size(100, 100), 500, 0, 600);
-            granchio.AggiungiOggetto(CanvasAcquario);
+            SetupTimers();
+            AddObjects();
+            LabelContatore.Content = "Pesci nell'aquario: " + fishCounter;
         }
 
-        private void SetupTimer()
+        private void SetupTimers()
         {
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromMilliseconds(TICK_MILLISECONDS);
-            timer.Tick += new EventHandler(TimerTickEvent!);
-            timer.Start();
+            fishTimer = new DispatcherTimer();
+            fishTimer.Interval = TimeSpan.FromMilliseconds(16);
+            fishTimer.Start();
+
+            propsTimer = new DispatcherTimer();
+            propsTimer.Interval = TimeSpan.FromMilliseconds(1000);
+            propsTimer.Start();
         }
 
-        private void TimerTickEvent(object sender, EventArgs args)
+        private void AddObjects()
         {
-            numeroPesci++;
-            LabelContatore.Content = $"Pesci nell'acquario: {numeroPesci}";
-        }
+            Image immagine = new Image();
+            Uri source = new Uri(IMAGES_PATH + "fish-3.png");
+            immagine = new Image();
+            BitmapImage tmp = new BitmapImage(source);
+            immagine.Source = new TransformedBitmap(tmp, new ScaleTransform(170 / tmp.Width, 140 / tmp.Height));
+            immagine.Margin = new Thickness(10, 10, 0, 0);
 
-        private void AddFish(Uri imgPath)
-        {
-            Random random = new Random();
-            Image img = new Image();
-            img.Source = new BitmapImage(imgPath);
-            img.Height = 100;
-            img.Width = 100;
+            AnimatoInAcqua acqua = new AnimatoInAcqua(CanvasAcquario, immagine, fishTimer);
+            acqua.AddToCanvas();
+            fishCounter++;
 
-            // Randomizza la posizione dell'immagine inserita
-            double posX = random.NextDouble() * CanvasAcquario.ActualWidth;
-            double posY = random.NextDouble() * CanvasAcquario.ActualHeight;
-            img.Margin = new Thickness(posX, posY, 0, 0);
+            Image frame1 = new Image();
+            tmp = new BitmapImage(new Uri(IMAGES_PATH + "algae-1.png"));
+            frame1.Source = new TransformedBitmap(tmp, new ScaleTransform(170 / tmp.Width, 140 / tmp.Height));
+            frame1.Margin = new Thickness(10, 10, 0, 0);
+            AnimatoSulPosto alga = new AnimatoSulPosto(CanvasAcquario, frame1, propsTimer);
 
-            CanvasAcquario.Children.Add(img);
-        }
+            alga.AddToCanvas();
 
+            Image submarine = new Image();
+            tmp = new BitmapImage(new Uri(IMAGES_PATH + "fish-1.png"));
+            submarine.Source = new TransformedBitmap(tmp, new ScaleTransform(170 / tmp.Width, 140 / tmp.Height));
+            submarine.Margin = new Thickness(10, 10, 0, 0);
+            // AnimatoPilotato sub = new AnimatoPilotato(CanvasAcquario, submarine, fishTimer, this); // !!! DECOMMENTA QUESTA RIGA PER FAR FUNZIONARE IL SOTTOMARINO NON SILURATO !!!
 
-        int x = 0;
-        int y = 0;
-        double scalaX = 1.0;
-        double scalaY = 1.0;
-        int gradi = 0;
-        private void TranslateButton_Click(object sender, RoutedEventArgs e)
-        {
-            Image fish = CanvasAcquario.FindName("immaginePesceDefault") as Image ?? throw new Exception("Image not exists");
+            Image bullet = new Image();
+            tmp = new BitmapImage(new Uri(IMAGES_PATH + "bullet-1.png"));
+            bullet.Source = new TransformedBitmap(tmp, new ScaleTransform(170 / tmp.Width, 140 / tmp.Height));
+            bullet.Margin = new Thickness(10, 10, 0, 0);
+            AnimatoPilotatoSilurato sub = new AnimatoPilotatoSilurato(CanvasAcquario, submarine, fishTimer, this, bullet);
 
-            TranslateTransform translate = new TranslateTransform(--x, --y);
-            fish.RenderTransform = translate;
-        }
+            sub.AddToCanvas();
 
-        private void RotateButton_Click(object sender, RoutedEventArgs e)
-        {
-            Image fish = CanvasAcquario.FindName("immaginePesceDefault") as Image ?? throw new Exception("Image not exists");
-
-            gradi += 10;
-            RotateTransform rotate = new RotateTransform(gradi, 0, 0);
-            fish.RenderTransform = rotate;
-        }
-
-        private void ScaleButton_Click(object sender, RoutedEventArgs e)
-        {
-            Image fish = CanvasAcquario.FindName("immaginePesceDefault") as Image ?? throw new Exception("Image not exists");
-            scalaX += 0.1;
-            scalaY += 0.1;
-            ScaleTransform scale = new ScaleTransform(scalaX, scalaY, 0, 0);
-            fish.RenderTransform = scale;
-        }
-
-        private void TranformButton_Click(object sender, RoutedEventArgs e)
-        {
-            TransformGroup group = new TransformGroup();
-
-            ScaleTransform scale = new ScaleTransform(scalaX, scalaY, 0, 0);
-            TranslateTransform translate = new TranslateTransform(x, y);
-            RotateTransform rotate = new RotateTransform(gradi, 0, 0);
-
-            group.Children.Add(scale);
-            group.Children.Add(rotate);
-            group.Children.Add(scale);
-
-            immaginePesceDefault.RenderTransform = group;
+            sub.Build();
+            acqua.Build();
+            alga.Build();
         }
     }
 }
