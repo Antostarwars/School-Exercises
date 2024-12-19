@@ -1,0 +1,19 @@
+﻿<Window x:Class="TecnicheGrafica.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TecnicheGrafica"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="1400">
+    <Grid Margin="0,0,-26,0">
+        <Canvas x:Name="canvasAcquario" Margin="0,0,24,0" Height="700" Width="1300">
+            <Canvas.Background>
+                <ImageBrush ImageSource="immagini/sfondo.jpg">
+
+                </ImageBrush>
+            </Canvas.Background>
+        </Canvas>
+
+    </Grid>
+</Window>

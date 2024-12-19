@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace AcquarioWPF
+namespace TecnicheGrafica
 {
     /// <summary>
     /// Interaction logic for App.xaml
