@@ -1,10 +1,11 @@
-﻿using System.Windows;
+﻿using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Threading;
 using AcquarioLib;
 
 /*
  * Antonio De Rosa 4H 20-12-2024
- * Tecniche Grafiche WPF - Aquario
+ * Tecniche Grafiche WPF - Acquario
  */
 namespace TecnicheGrafica
 {
@@ -34,24 +35,24 @@ namespace TecnicheGrafica
         /// </summary>
         private void AggiungiOggetti()
         {
-            AnimatoInAcqua animato = new AnimatoInAcqua(canvasAcquario, Inanimato.ImageFromName("foto_pesce_palla.png"), FishDispatcher);
+            AnimatoInAcqua animato = new AnimatoInAcqua(canvasAcquario, Inanimato.ImageFromName("pesce-pagliaccio.png"), FishDispatcher);
             animato.ChangeCenterOfRotation(100, 100);
 
-            AnimatoSulPosto alga = new AnimatoSulPosto(canvasAcquario, Inanimato.ImageFromName("alga1.png"), PropsDispatcher);
+            AnimatoSulPosto alga = new AnimatoSulPosto(canvasAcquario, Inanimato.ImageFromName("alga-1.png"), PropsDispatcher);
 
-            AnimatoPilotatoSilurante sub = new AnimatoPilotatoSilurante(canvasAcquario, Inanimato.ImageFromName("submarine.png"), FishDispatcher, this, Inanimato.ImageFromName("siluro.png"));
+            AnimatoPilotatoSilurante sub = new AnimatoPilotatoSilurante(canvasAcquario, Inanimato.ImageFromName("submarine.png"), FishDispatcher, this, Inanimato.ImageFromName("missile.png"));
 
-            AnimatoSulFondo granchio = new AnimatoSulFondo(canvasAcquario, Inanimato.ImageFromName("crab.png"), FishDispatcher);
+            AnimatoSulFondo paguro = new AnimatoSulFondo(canvasAcquario, Inanimato.ImageFromName("paguro.png"), FishDispatcher);
 
-            AnimatoInAcqua carpa = new AnimatoInAcqua(canvasAcquario, Inanimato.ImageFromName("carp.png"), FishDispatcher, 20);
+            AnimatoInAcqua polipo = new AnimatoInAcqua(canvasAcquario, Inanimato.ImageFromName("polipo.png"), FishDispatcher, 20);
 
-            AnimatoSulPosto alga2 = new AnimatoSulPosto(canvasAcquario, Inanimato.ImageFromName("alga2.png", 1125), PropsDispatcher);
+            AnimatoSulPosto alga2 = new AnimatoSulPosto(canvasAcquario, Inanimato.ImageFromName("alga-2.png", 1125), PropsDispatcher);
 
             sub.Start();
             animato.Start();
             alga.Start();
-            granchio.Start();
-            carpa.Start();
+            paguro.Start();
+            polipo.Start();
             alga2.Start();
         }
 
@@ -63,6 +64,8 @@ namespace TecnicheGrafica
             InitializeComponent();
             SetupTimer();
             AggiungiOggetti();
+
+            this.Title = "Antonio De Rosa 4H - Acquario in WPF";
         }
     }
 }

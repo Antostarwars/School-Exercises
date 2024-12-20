@@ -6,7 +6,7 @@ using System.Windows.Threading;
 
 /*
  * Antonio De Rosa 4H 20-12-2024
- * Tecniche Grafiche WPF - Aquario
+ * Tecniche Grafiche WPF - Acquario
  */
 namespace AcquarioLib
 {
@@ -37,7 +37,7 @@ namespace AcquarioLib
         public static Image ImageFromName(string name, int left = 10, int top = 10)
         {
             Image frame = new Image();
-            BitmapImage tmp = new BitmapImage(new Uri($"immagini/{name}", UriKind.RelativeOrAbsolute));
+            BitmapImage tmp = new BitmapImage(new Uri($"pack://application:,,,/Immagini/{name}"));
             frame.Source = new TransformedBitmap(tmp, new ScaleTransform(170 / tmp.Width, 140 / tmp.Height));
             frame.Margin = new Thickness(left, top, 0, 0);
 

@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 /*
  * Antonio De Rosa 4H 20-12-2024
- * Tecniche Grafiche WPF - Aquario
+ * Tecniche Grafiche WPF - Acquario
  */
 namespace AcquarioLib
 {

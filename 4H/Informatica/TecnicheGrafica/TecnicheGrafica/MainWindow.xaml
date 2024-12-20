@@ -6,8 +6,16 @@
         xmlns:local="clr-namespace:TecnicheGrafica"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1400">
-    <Grid Margin="0,0,-26,0">
-        <Canvas x:Name="canvasAcquario" Margin="0,0,24,0" Height="700" Width="1300">
+    <Grid Margin="0,0,0,10">
+        <Canvas x:Name="canvasAcquario" Margin="0,0,-4,-12" RenderTransformOrigin="0.5,0.5">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
             <Canvas.Background>
                 <ImageBrush ImageSource="immagini/sfondo.jpg">
 
