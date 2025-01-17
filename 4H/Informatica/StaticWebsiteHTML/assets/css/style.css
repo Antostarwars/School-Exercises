@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); /* Montserrat Font */
+
+
+:root { /* Definizione dei colori */
+    --dark-color: #332D2D;
+    --light-color: #FBFBFB;
+
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.center-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.center-content > div { /* Centering the content only for the div */
+    text-align: center;
+}
+
+.avatar {
+    display: block;
+    margin: 0 auto;
+    border-radius: 100%;
+    width: 200px;
+    border: 1px solid var(--light-color);
+}
+
+h1.title {
+    font-size: 32pt;
+    margin: 0;
+    padding-left: 20px;
+}
+
+hr.rounded {
+    border-top: 3px solid var(--light-color);
+    border-radius: 5px;
+}
+
+a {
+    color: #54B4D3;
+    font-size: 14pt;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+ul {
+    display: inline-block;
+    text-align: left;
+}
+
+/* Struttura pagine Secondarie */
+.secondary-title {
+    grid-area: secondary-title;
+}
+
+.secondary-subtitle {
+    grid-area: secondary-subtitle;
+}
+
+.secondary-content {
+    grid-area: secondary-content;
+}
+
+.secondary-container {
+    display: grid;
+    grid-template-areas:
+        "secondary-title"
+        "secondary-subtitle"
+        "secondary-content";
+}
