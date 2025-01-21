@@ -77,3 +77,9 @@ ul {
         "secondary-subtitle"
         "secondary-content";
 }
+
+table, td, th {
+    border: 2px solid var(--light-color);
+    border-collapse: collapse;
+    padding: 3px;
+}
