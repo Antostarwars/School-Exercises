@@ -83,3 +83,41 @@ table, td, th {
     border-collapse: collapse;
     padding: 3px;
 }
+
+.go-back-icon {
+    width: 6;
+    height: 6;
+    color: #FBFBFB;
+}
+
+.rounded-borders {
+    border-radius: 16px;
+    border: 1px solid var(--light-color);
+}
+
+
+
+/* CSS per la pagina lavoro TODO: DA FINIRE LA STRUTTURA E LO STILE! */
+
+.lavoro-title {
+
+}
+
+.lavoro-subtitle {
+
+}
+
+.lavoro-aspirazioni {
+
+}
+
+.lavoro-curriculum {
+
+}
+
+.lavoro-container {
+    display: grid;
+    grid-template-areas:
+    "" 
+    "";
+}
