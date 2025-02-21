@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Antonio De Rosa 4h - Scomessa Dadi - 21/02/2025 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Scommessa su Dadi!</h1>
+    <h2 id="saldo">Il tuo saldo è: 500</h2>
+
+    <label for="scommessa">Scommessa: </label>
+    <input type="number" max="12" min="2" value="6" id="scommessa">
+
+    <label for="puntata">Puntata: </label>
+    <input type="number" id="puntata" min="1" value="50">
+
+    <button onclick="play()">Scommetti</button>
+
+    <h2 id="risultato"></h2>
+    <script src="script.js"></script>
+</body>
+</html>
