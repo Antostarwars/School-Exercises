@@ -96,28 +96,35 @@ table, td, th {
 }
 
 
-
-/* CSS per la pagina lavoro TODO: DA FINIRE LA STRUTTURA E LO STILE! */
-
-.lavoro-title {
-
+.cv-section {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--light-color);
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.lavoro-subtitle {
-
+.cv-section h2, .cv-section h3 {
+    margin-top: 0;
 }
 
-.lavoro-aspirazioni {
-
+.cv-section ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.lavoro-curriculum {
-
+.cv-section ul li {
+    margin-bottom: 10px;
 }
 
-.lavoro-container {
-    display: grid;
-    grid-template-areas:
-    "" 
-    "";
+.cv-section ul ul {
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.cv-section ul ul li {
+    margin-bottom: 5px;
 }
