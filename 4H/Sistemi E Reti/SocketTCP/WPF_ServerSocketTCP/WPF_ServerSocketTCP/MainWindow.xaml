@@ -1,0 +1,13 @@
+﻿<Window x:Class="WpfSocketServer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Socket Server" Height="250" Width="400">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Label Content="Messaggio di risposta:"/>
+            <TextBox x:Name="messageTextBox" Text="Default response" Width="200" Margin="10"/>
+            <Button x:Name="toggleButton" Content="Avvia Server" Click="ToggleServer_Click" Width="100" Margin="10"/>
+            <Label x:Name="statusLabel" Content="Server non attivo" Margin="10"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -14,9 +14,9 @@ namespace SocketTCP
 
         public static void StartServer()
         {
-            IPHostEntry host = Dns.GetHostEntry("10.73.0.21");
+            IPHostEntry host = Dns.GetHostEntry("10.73.0.24");
 
-            IPAddress ip = IPAddress.Parse("10.73.0.21"); //host.AddressList[0];
+            IPAddress ip = IPAddress.Parse("10.73.0.24"); //host.AddressList[0];
             IPEndPoint localEndPoint = new IPEndPoint(ip, 11000);
 
             try
