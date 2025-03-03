@@ -1,0 +1,83 @@
+﻿<Window x:Class="WpfAppMatriceConvulzione.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMatriceConvulzione"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Background="#FFCC2C1C">
+
+        <Button x:Name="caricafoto" Content="Carica Foto" HorizontalAlignment="Left" Height="34" Margin="28,58,0,0" VerticalAlignment="Top" Width="120" Click="caricafoto_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FFECDA16" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBox x:Name="g1" HorizontalAlignment="Left" Height="32" Margin="28,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center" >
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBox x:Name="g2" HorizontalAlignment="Left" Height="32" Margin="70,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBox x:Name="g3" HorizontalAlignment="Left" Height="32" Margin="112,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center" >
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBox x:Name="g4" HorizontalAlignment="Left" Height="32" Margin="28,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBox x:Name="g5" HorizontalAlignment="Left" Height="32" Margin="70,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBox x:Name="g6" HorizontalAlignment="Left" Height="32" Margin="112,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBox x:Name="g7" HorizontalAlignment="Left" Height="33" Margin="28,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBox x:Name="g8" HorizontalAlignment="Left" Height="33" Margin="70,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <TextBox x:Name="g9" HorizontalAlignment="Left" Height="33" Margin="112,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextAlignment="Center" FontSize="16" VerticalContentAlignment="Center" >
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+        </TextBox>
+        <Button x:Name="trasforma" Content="Trasforma" HorizontalAlignment="Left" Height="28" Margin="46,248,0,0" VerticalAlignment="Top" Width="84" Click="trasforma_Click">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFFFFFC" Offset="0"/>
+                    <GradientStop Color="#FFE6FF00" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="358" Margin="177,25,0,0" VerticalAlignment="Top" Width="580">
+            <Image x:Name="immagine" />
+        </Border>
+
+    </Grid>
+</Window>
