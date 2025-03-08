@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button Content="Send Message" HorizontalAlignment="Left" Margin="34,65,0,0" VerticalAlignment="Top" Height="32" Width="107" Click="Button_Click"/>
-        <TextBox x:Name="IP" HorizontalAlignment="Left" Margin="169,49,0,0" TextWrapping="Wrap" Text="10.73.0.24" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="IP" HorizontalAlignment="Left" Margin="169,49,0,0" TextWrapping="Wrap" Text="10.73.0.5" VerticalAlignment="Top" Width="120"/>
         <Label Content="Ip del Server" HorizontalAlignment="Left" Margin="169,18,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Messaggio" HorizontalAlignment="Left" Margin="169,92,0,0" TextWrapping="Wrap" Text="Messaggio" VerticalAlignment="Top" Width="120"/>
         <Label x:Name="risposta" Content="Risposta del Server:" HorizontalAlignment="Left" Margin="34,157,0,0" VerticalAlignment="Top"/>

@@ -4,6 +4,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Collections.Concurrent;
 
 namespace WpfSocketServer
 {
@@ -11,6 +12,7 @@ namespace WpfSocketServer
     {
         private Socket listener;
         private bool isRunning = false;
+        private ConcurrentBag<Task> clientTasks = new ConcurrentBag<Task>();
 
         public MainWindow()
         {
@@ -37,7 +39,7 @@ namespace WpfSocketServer
         {
             try
             {
-                IPAddress ip = IPAddress.Parse("10.73.0.24");
+                IPAddress ip = IPAddress.Parse("10.73.0.5");
                 IPEndPoint localEndPoint = new IPEndPoint(ip, 11000);
 
                 listener = new Socket(ip.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
@@ -46,29 +48,13 @@ namespace WpfSocketServer
 
                 UpdateUI("In attesa di connessioni...");
 
-                using (Socket handler = listener.Accept())
+                while (isRunning)
                 {
+                    Socket handler = listener.Accept();
                     UpdateUI("Connessione riuscita!");
 
-                    // Ricezione dati
-                    string data = "";
-                    byte[] buffer = new byte[1024];
-
-                    while (true)
-                    {
-                        int received = handler.Receive(buffer);
-                        data += Encoding.ASCII.GetString(buffer, 0, received);
-                        if (data.IndexOf("<EOF>") > -1) break;
-                    }
-
-                    UpdateUI($"Dati ricevuti: {data.Replace("<EOF>", "")}");
-
-                    // Invio risposta personalizzata
-                    string responseMessage = Dispatcher.Invoke(() => $"{messageTextBox.Text}<EOF>");
-                    byte[] msg = Encoding.ASCII.GetBytes(responseMessage);
-                    handler.Send(msg);
-
-                    handler.Shutdown(SocketShutdown.Both);
+                    Task clientTask = Task.Run(() => HandleClient(handler));
+                    clientTasks.Add(clientTask);
                 }
             }
             catch (SocketException ex) when (ex.SocketErrorCode == SocketError.Interrupted)
@@ -85,16 +71,65 @@ namespace WpfSocketServer
             }
         }
 
+        private void HandleClient(Socket handler)
+        {
+            try
+            {
+                StringBuilder receivedData = new StringBuilder();
+                byte[] buffer = new byte[1024];
+
+                while (isRunning)
+                {
+                    int bytesReceived = handler.Receive(buffer);
+                    if (bytesReceived == 0) break;
+
+                    receivedData.Append(Encoding.ASCII.GetString(buffer, 0, bytesReceived));
+                    string content = receivedData.ToString();
+
+                    while (content.Contains("<EOF>"))
+                    {
+                        int eofIndex = content.IndexOf("<EOF>");
+                        string message = content.Substring(0, eofIndex);
+                        content = content.Substring(eofIndex + 5);
+                        receivedData.Clear();
+                        receivedData.Append(content);
+
+                        UpdateUI($"Dati ricevuti: {message}");
+
+                        string responseMessage = Dispatcher.Invoke(() => $"{messageTextBox.Text}<EOF>");
+                        byte[] responseBytes = Encoding.ASCII.GetBytes(responseMessage);
+                        handler.Send(responseBytes);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                UpdateUI($"Errore client: {ex.Message}");
+            }
+            finally
+            {
+                handler.Shutdown(SocketShutdown.Both);
+                handler.Close();
+                handler.Dispose();
+            }
+        }
+
         private void StopServer()
         {
             try
             {
                 listener?.Close();
                 listener?.Dispose();
+
+                foreach (var task in clientTasks)
+                {
+                    task.Wait(1000);
+                }
+                clientTasks.Clear();
             }
             catch (Exception ex)
             {
-                UpdateUI($"Errore durante la chiusura: {ex.Message}");
+                UpdateUI($"Errore chiusura: {ex.Message}");
             }
         }
 
