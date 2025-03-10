@@ -5,6 +5,14 @@ VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppMatriceConvulzione", "WpfAppMatriceConvulzione\WpfAppMatriceConvulzione.csproj", "{62644C17-2DF9-4743-BE37-2B1401B418E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProgressBarSync", "WpfAppProgressBarSync\WpfAppProgressBarSync.csproj", "{E03B2D89-39EA-457C-ACBC-0DF8A6FFE6A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProgressBarAsync", "WpfAppProgressBarAsync\WpfAppProgressBarAsync.csproj", "{9D117BD0-9E50-49AA-9D71-CF26E5C182BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProgressBarAsync2", "WpfAppProgressBarAsync2\WpfAppProgressBarAsync2.csproj", "{370529C1-16ED-432A-9418-3363D24FAA22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAppProgressBarAsync3", "WpfAppProgressBarAsync3\WpfAppProgressBarAsync3.csproj", "{52E4C62F-E4BA-43AC-98A0-270CDBDC99B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +23,22 @@ Global
 		{62644C17-2DF9-4743-BE37-2B1401B418E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62644C17-2DF9-4743-BE37-2B1401B418E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62644C17-2DF9-4743-BE37-2B1401B418E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E03B2D89-39EA-457C-ACBC-0DF8A6FFE6A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E03B2D89-39EA-457C-ACBC-0DF8A6FFE6A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E03B2D89-39EA-457C-ACBC-0DF8A6FFE6A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E03B2D89-39EA-457C-ACBC-0DF8A6FFE6A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D117BD0-9E50-49AA-9D71-CF26E5C182BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D117BD0-9E50-49AA-9D71-CF26E5C182BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D117BD0-9E50-49AA-9D71-CF26E5C182BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D117BD0-9E50-49AA-9D71-CF26E5C182BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{370529C1-16ED-432A-9418-3363D24FAA22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{370529C1-16ED-432A-9418-3363D24FAA22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{370529C1-16ED-432A-9418-3363D24FAA22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{370529C1-16ED-432A-9418-3363D24FAA22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E4C62F-E4BA-43AC-98A0-270CDBDC99B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E4C62F-E4BA-43AC-98A0-270CDBDC99B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E4C62F-E4BA-43AC-98A0-270CDBDC99B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E4C62F-E4BA-43AC-98A0-270CDBDC99B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
