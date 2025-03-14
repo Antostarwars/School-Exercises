@@ -9,7 +9,7 @@ function getDiceNumber() {
 }
 
 function play() {
-    puntata = parseInt(document.getElementById("puntata").value);
+    puntata = parseInt($("#puntata").val());
     if (puntata > saldo) {
         alert("Non hai abbastanza soldi per puntare questa cifra");
         return;
@@ -22,7 +22,7 @@ function play() {
     saldo -= puntata;
     let diceNumber = getDiceNumber();
     
-    let scommessa = parseInt(document.getElementById("scommessa").value);
+    let scommessa = parseInt($("#scommessa").val());
     if (scommessa < 2 || scommessa > 12) {
         alert("La scommessa deve essere compresa tra 2 e 12");
         return;
@@ -30,9 +30,10 @@ function play() {
     
     if (scommessa == diceNumber) {
         saldo += puntata * 2;
-        document.getElementById("risultato").innerHTML = "Hai vinto! Il numero uscito è " + diceNumber
+        $("#risultato").text("Hai vinto! Il numero uscito è " + diceNumber);
     } else {
-        document.getElementById("risultato").innerHTML = "Hai perso! Il numero uscito è " + diceNumber
+        $("#risultato").text("Hai perso! Il numero uscito è " + diceNumber);
     }
-    document.getElementById("saldo").innerHTML = "Il tuo saldo è: " + saldo;
+    
+    $("#saldo").text("Il tuo saldo è: " + saldo);
 }
