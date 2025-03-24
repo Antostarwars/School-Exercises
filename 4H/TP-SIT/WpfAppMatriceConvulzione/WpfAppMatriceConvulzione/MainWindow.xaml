@@ -75,9 +75,10 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="358" Margin="177,25,0,0" VerticalAlignment="Top" Width="580">
+        <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="338" Margin="177,25,0,0" VerticalAlignment="Top" Width="580">
             <Image x:Name="immagine" />
         </Border>
+        <ProgressBar x:Name="ImageProgressBar" HorizontalAlignment="Left" Height="20" Margin="177,373,0,0" VerticalAlignment="Top" Width="580"/>
 
     </Grid>
 </Window>
