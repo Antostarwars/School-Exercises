@@ -1,0 +1,29 @@
+﻿<Window x:Class="ImageProcessing.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ImageProcessing"
+        mc:Ignorable="d"
+        Title="Antonio De Rosa 4H" Height="484" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Button x:Name="btn_chooseFile" Content="Choose file" HorizontalAlignment="Left" Height="29" Margin="34,119,0,0" VerticalAlignment="Top" Width="114" Click="btn_chooseFile_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="31" Margin="34,153,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" FontSize="30" Padding="3,-7,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox HorizontalAlignment="Left" Height="31" Margin="76,153,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="30" Padding="3,-7,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox HorizontalAlignment="Left" Height="31" Margin="118,153,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="30" Padding="3,-7,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_00" HorizontalAlignment="Left" Height="31" Margin="34,153,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_10" HorizontalAlignment="Left" Height="31" Margin="76,153,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_20" HorizontalAlignment="Left" Height="31" Margin="118,153,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_01" HorizontalAlignment="Left" Height="31" Margin="34,189,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_11" HorizontalAlignment="Left" Height="31" Margin="76,189,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_21" HorizontalAlignment="Left" Height="31" Margin="118,189,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_02" HorizontalAlignment="Left" Height="31" Margin="34,225,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="31" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_12" HorizontalAlignment="Left" Height="31" Margin="76,225,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <TextBox x:Name="txt_22" HorizontalAlignment="Left" Height="31" Margin="118,225,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="30" FontSize="11" Padding="3,6,0,0" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True"/>
+        <Button x:Name="btn_process" Content="Apply matrix" HorizontalAlignment="Left" Height="29" Margin="34,261,0,0" VerticalAlignment="Top" Width="114" Click="btn_process_Click"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="347" Margin="232,45,0,0" VerticalAlignment="Top" Width="509" Source="/gabibbo.jpg"/>
+        <TextBlock x:Name="imageTitle" HorizontalAlignment="Left" Height="22" Margin="232,18,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" Text="test.png [0000x0000]"/>
+        <ProgressBar x:Name="preggers" Margin="232,403,61,23"/>
+
+    </Grid>
+</Window>
